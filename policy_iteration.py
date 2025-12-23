@@ -17,8 +17,7 @@ def policy_iteration(env, gamma=0.95, epsilon=1e-4):
     # Each state gets a random action from the list of possible actions
     policy = np.random.choice(env.actions, size=(env.rows, env.cols)) 
     
-    # 2) Initialize value function V(s) = 0 for all states
-    V = np.zeros((env.rows, env.cols))
+    V = env.rewards.copy()
 
     # 3) Outer loop: Repeat until the policy is stable
     while True:
@@ -96,5 +95,4 @@ def policy_iteration(env, gamma=0.95, epsilon=1e-4):
             break
 
     return V, policy
-
 
